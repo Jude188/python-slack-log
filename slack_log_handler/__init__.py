@@ -30,6 +30,7 @@ class SlackLogHandler(logging.Handler):
         icon_emoji = getattr(record, 'slack_icon', self.emojis[record.levelno])
         content = {
             'text': self.format(record),
+            'as_user': False,
             'icon_emoji': icon_emoji
         }
         if hasattr(record, 'slack_username'):
